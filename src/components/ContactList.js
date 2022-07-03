@@ -1,16 +1,16 @@
-import react from 'react';
-import ContactCard from './ContactCard';
+import react from "react";
+import ContactCard from "./ContactCard";
 
 const ContactList = (props) => {
-    console.log(props);
+  console.log(props);
+  const deleteContactHandler = (id) => {
+    props.getContactId(id);
+  };
 
-    const renderContactList = props.contacts.map((contact) => {
-       
-      return <ContactCard contact={contact} />;
-    
-
-     });
-    return  <div className="ui celled list">{renderContactList} </div>
+  const renderContactList = props.contacts.map((contact) => {
+    return <ContactCard contact={contact} clickHander={deleteContactHandler} key ={contact.id} />;
+  });
+  return <div className="ui celled list">{renderContactList} </div>;
 };
 
 export default ContactList;
